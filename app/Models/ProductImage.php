@@ -9,4 +9,11 @@ class ProductImage extends Model
 {
     use HasFactory;
      protected $fillable = ['image','product_id'];
+
+     public static function  findImage($id){
+     	
+     	$image = ProductImage::where('product_id','=',$id)->get();
+     	return $image;
+
+     }
 }
