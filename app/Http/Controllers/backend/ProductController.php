@@ -1,20 +1,17 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\backend;
 
 use Illuminate\Http\Request;
+
 use App\Models\Product;
 use App\Models\ProductImage;
 use Illuminate\Support\Str;
 use Image;
+use App\Http\Controllers\Controller;
 
-
-class AdminPageController extends Controller
+class ProductController extends Controller
 {
-    public function index(){
-    	return view('admin.pages.index');
-    }
-
     public function product(){
         $this->data['products'] = Product::all();
 
@@ -42,7 +39,9 @@ class AdminPageController extends Controller
     	$product->status = 0;
     	$product->save();
 
-        if(count($request->image)>0){
+        if(isset($request->image)){
+            
+            if(count($request->image)>0){
             foreach ($request->image as  $image) {
                  $img   = time().'.'.$image->extension(); 
                  $location = public_path('image/products/'.$img);
@@ -53,6 +52,7 @@ class AdminPageController extends Controller
                 $product_image['product_id'] = $product->id;
                 ProductImage::create($product_image);
             }
+        }
         }
     	return redirect()->route('admin.product');
     }

@@ -2,9 +2,11 @@
 @section('content')
 
 <div class="main-panel">
+
   <div class="content-wrapper">
      <h4 class="card-title">All product</h4>
     <div class="row">
+      <a href="{{ route('admin.product') }}" class="btn btn-success btn-sm"><i class="fa fa-plus"></i> Add product</a>
       <div class="col-lg-12 grid-margin stretch-card">
             <table class="table">
               <thead>

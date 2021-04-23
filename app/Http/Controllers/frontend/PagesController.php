@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\frontend;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Http\Controllers\Controller;
 class PagesController extends Controller
 {
     public function index() {

@@ -31,19 +31,14 @@
           <label for="title" class="form-label">Offer Price</label>
           {{ Form::number('offer_price',NULL,['class' => 'form-control','id'=> 'title', 'placeholder'=> 'Offer Price'])}}
         </div>
-<!--         <h3>images</h3>
-        @foreach($image as $key => $image)
-           <img src="{{asset('image/products/'.$image->image)}}" width="50px">
-           <h6>{{ $key+=1 }}</h6>
-        @endforeach -->
-      <!--   <div class="row">
-
+        @if(!isset($image))
           <div class="col-md-4">
               <div class="mb-3">
                 <label for="title" class="form-label">Product Image</label>
                 {{ Form::file('image[0]',NULL,['class' => 'form-control','id'=> 'title', 'placeholder'=> 'Chose image'])}}
               </div>
            </div>
+           
            <div class="col-md-4">
               <div class="mb-3">
                 <label for="title" class="form-label">Product Image</label>
@@ -68,7 +63,8 @@
                 {{ Form::file('image[]',NULL,['class' => 'form-control','id'=> 'title', 'placeholder'=> 'Chose image'])}}
               </div>
            </div>         
-        </div> -->
+        </div>
+        @endif 
 
         <button type="submit" class="btn btn-primary">Add product</button>
     {!! Form::close() !!}

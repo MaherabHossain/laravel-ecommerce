@@ -1,8 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PagesController;
-use App\Http\Controllers\AdminPageController;
+use App\Http\Controllers\frontend\PagesController;
+use App\Http\Controllers\backend\AdminPageController;
+use App\Http\Controllers\backend\ProductController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,15 +15,28 @@ use App\Http\Controllers\AdminPageController;
 |
 */
 
+
+//users route
+
 Route::get('/',  [PagesController::class,'index'])->name('index');
 Route::get('/products', [PagesController::class,'products'])->name('products');
 
+
+//admin route
+
 Route::group(['prefix' => 'admin'], function(){
-	Route::get('/', 	[AdminPageController::class,'index']);
-	Route::get('/product', 	        [AdminPageController::class,'product'])->name('product');
-	Route::get('/product/create', 	[AdminPageController::class,'product_create'])->name('admin.product');
-	Route::get('/product/create/edit/{id}', 	[AdminPageController::class,'product_edit'])->name('admin.product.edit');
-	Route::put('/product/create/edit/{id}', 	[AdminPageController::class,'product_edit_store'])->name('admin.product.edit');
-	Route::post('/product/store',	[AdminPageController::class,'product_store'])->name('product.store');
-	Route::delete('/product/delete/{id}', [AdminPageController::class,'delete'])->name('admin.product.delete');
+	Route::get('/', 	[AdminPageController::class,'index'])->name('admin');
+
+
+	//admin product route
+
+	Route::group(['prefix' => '/product'], function(){
+
+		Route::get('/', 	                [ProductController::class,'product'])->name('product');
+		Route::get('/create', 	            [ProductController::class,'product_create'])->name('admin.product');
+		Route::get('/create/edit/{id}', 	[ProductController::class,'product_edit'])->name('admin.product.edit');
+		Route::put('/create/edit/{id}', 	[ProductController::class,'product_edit_store'])->name('admin.product.edit');
+		Route::post('/store',		        [ProductController::class,'product_store'])->name('product.store');
+		Route::delete('/delete/{id}',       [ProductController::class,'delete'])->name('admin.product.delete');
+    });
 });

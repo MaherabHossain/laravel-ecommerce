@@ -5,10 +5,11 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Star Admin Free Bootstrap-4 Admin Dashboard Template</title>
+  <title>AmarDoakn Admin</title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="{{ asset('admin_template/node_modules/mdi/css/materialdesignicons.min.css') }}">
   <link rel="stylesheet" href="{{ asset('admin_template/node_modules/simple-line-icons/css/simple-line-icons.css') }}">
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
   <!-- endinject -->
   <!-- plugin css for this page -->
   <!-- End plugin css for this page -->
@@ -23,8 +24,8 @@
     <!-- partial:partials/_navbar.html -->
     <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
-        <a class="navbar-brand brand-logo" href="index.html"><img src="{{ asset('admin_template/images/logo.svg')}}" alt="logo"/></a>
-        <a class="navbar-brand brand-logo-mini" href="index.html"><img src="{{ asset('admin_template/images/logo-mini.svg')}}" alt="logo"/></a>
+        <a class="navbar-brand brand-logo" href="{{ route('admin') }}"><img src="{{ asset('admin_template/images/logo.svg')}}" alt="logo"/></a>
+        <a class="navbar-brand brand-logo-mini" href="{{ route('admin') }}"><img src="{{ asset('admin_template/images/logo-mini.svg')}}" alt="logo"/></a>
       </div>
       <div class="navbar-menu-wrapper d-flex align-items-center">
         <ul class="navbar-nav navbar-nav-left header-links d-none d-md-flex">
@@ -108,7 +109,7 @@
               <div class="dropdown-divider"></div>
               <a class="dropdown-item preview-item">
                 <div class="preview-thumbnail">
-                  <img src="admin_template/images/faces/face4.jpg" alt="image" class="profile-pic">
+                  <img src="{{asset('admin_template/images/faces/face4.jpg')}}"alt="image" class="profile-pic">
                 </div>
                 <div class="preview-item-content flex-grow">
                   <h6 class="preview-subject ellipsis font-weight-medium">David Grey
@@ -122,7 +123,7 @@
               <div class="dropdown-divider"></div>
               <a class="dropdown-item preview-item">
                 <div class="preview-thumbnail">
-                  <img src="admin_template/images/faces/face2.jpg" alt="image" class="profile-pic">
+                  <img src="{{asset('admin_template/images/faces/face2.jpg')}}"alt="image" class="profile-pic">
                 </div>
                 <div class="preview-item-content flex-grow">
                   <h6 class="preview-subject ellipsis font-weight-medium">Tim Cook
@@ -136,7 +137,7 @@
               <div class="dropdown-divider"></div>
               <a class="dropdown-item preview-item">
                 <div class="preview-thumbnail">
-                  <img src="admin_template/images/faces/face3.jpg" alt="image" class="profile-pic">
+                  <img src="{{asset('admin_template/images/faces/face3.jpg')}}"alt="image" class="profile-pic">
                 </div>
                 <div class="preview-item-content flex-grow">
                   <h6 class="preview-subject ellipsis font-weight-medium"> Johnson
@@ -151,7 +152,7 @@
           </li>
           <li class="nav-item d-none d-lg-block">
             <a class="nav-link" href="#">
-              <img class="img-xs rounded-circle" src="admin_template/images/faces/face4.jpg" alt="">
+              <img class="img-xs rounded-circle" src="{{asset('admin_template/images/faces/face4.jpg')}}"alt="">
             </a>
           </li>
         </ul>
@@ -167,7 +168,7 @@
         <ul class="nav">
           <li class="nav-item nav-profile">
             <div class="nav-link">
-              <div class="profile-image"> <img src="admin_template/images/faces/face4.jpg" alt="image"/> <span class="online-status online"></span> </div>
+              <div class="profile-image"> <img src="{{asset('admin_template/images/faces/face4.jpg')}}"alt="image"/> <span class="online-status online"></span> </div>
               <div class="profile-name">
                 <p class="name">Richard V.Welsh</p>
                 <p class="designation">Manager</p>
@@ -175,15 +176,15 @@
               </div>
             </div>
           </li>
-          <li class="nav-item"><a class="nav-link" href="index.html"><img class="menu-icon" src="admin_template/images/menu_icons/01.png" alt="menu icon"><span class="menu-title">Dashboard</span></a></li>
-          <li class="nav-item"><a class="nav-link" href="{{ route('product') }}"><img class="menu-icon" src="admin_template/images/menu_icons/02.png" alt="menu icon"><span class="menu-title">Product</span></a></li>
-          <li class="nav-item"><a class="nav-link" href="pages/ui-features/buttons.html"><img class="menu-icon" src="admin_template/images/menu_icons/03.png" alt="menu icon"><span class="menu-title">Buttons</span></a></li>
-          <li class="nav-item"><a class="nav-link" href="pages/forms/basic_elements.html"><img class="menu-icon" src="admin_template/images/menu_icons/04.png" alt="menu icon"><span class="menu-title">Form</span></a></li>
-          <li class="nav-item"><a class="nav-link" href="pages/charts/chartjs.html"><img class="menu-icon" src="admin_template/images/menu_icons/05.png" alt="menu icon"><span class="menu-title">Charts</span></a></li>
-          <li class="nav-item"><a class="nav-link" href="pages/tables/basic-table.html"><img class="menu-icon" src="admin_template/images/menu_icons/06.png" alt="menu icon"><span class="menu-title">Table</span></a></li>
-          <li class="nav-item"><a class="nav-link" href="pages/icons/font-awesome.html"><img class="menu-icon" src="admin_template/images/menu_icons/07.png" alt="menu icon"> <span class="menu-title">Icons</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ route('admin') }}"><img class="menu-icon" src="{{asset('admin_template/images/menu_icons/01.png')}}" alt="menu icon"><span class="menu-title">Dashboard</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ route('product') }}"><img class="menu-icon" src="{{asset('admin_template/images/menu_icons/02.png')}}" alt="menu icon"><span class="menu-title">Product</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="pages/ui-features/buttons.html"><img class="menu-icon" src="{{asset('admin_template/images/menu_icons/03.png')}}" alt="menu icon"><span class="menu-title">Buttons</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="pages/forms/basic_elements.html"><img class="menu-icon" src="{{asset('admin_template/images/menu_icons/04.png')}}" alt="menu icon"><span class="menu-title">Form</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="pages/charts/chartjs.html"><img class="menu-icon" src="{{asset('admin_template/images/menu_icons/05.png')}}" alt="menu icon"><span class="menu-title">Charts</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="pages/tables/basic-table.html"><img class="menu-icon" src="{{asset('admin_template/images/menu_icons/06.png')}}" alt="menu icon"><span class="menu-title">Table</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="pages/icons/font-awesome.html"><img class="menu-icon" src="{{asset('admin_template/images/menu_icons/07.png')}}" alt="menu icon"> <span class="menu-title">Icons</span></a></li>
           <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#general-pages" aria-expanded="false" aria-controls="general-pages"> <img class="menu-icon" src="admin_template/images/menu_icons/08.png" alt="menu icon"> <span class="menu-title">General Pages</span><i class="menu-arrow"></i></a>
+            <a class="nav-link" data-toggle="collapse" href="#general-pages" aria-expanded="false" aria-controls="general-pages"> <img class="menu-icon" src="{{asset('admin_template/images/menu_icons/08.png')}}" alt="menu icon"> <span class="menu-title">General Pages</span><i class="menu-arrow"></i></a>
             <div class="collapse" id="general-pages">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item"> <a class="nav-link" href="pages/samples/blank-page.html">Blank Page</a></li>
@@ -194,7 +195,7 @@
               </ul>
             </div>
           </li>
-          <li class="nav-item"><a class="nav-link" href="pages/ui-features/typography.html"><img class="menu-icon" src="admin_template/images/menu_icons/09.png" alt="menu icon"> <span class="menu-title">Typography</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="pages/ui-features/typography.html"><img class="menu-icon" src="{{asset('admin_template/images/menu_icons/09.png')}}" alt="menu icon"> <span class="menu-title">Typography</span></a></li>
         </ul>
       </nav>
       <!-- partial -->
