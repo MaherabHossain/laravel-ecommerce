@@ -42,16 +42,16 @@ class ProductController extends Controller
         if(isset($request->image)){
             
             if(count($request->image)>0){
-            foreach ($request->image as  $image) {
-                 $img   = time().'.'.$image->extension(); 
-                 $location = public_path('image/products/'.$img);
-                
-                 Image::make($image)->save($location);
+	            foreach ($request->image as  $image) {
+	                 $img   = time().'.'.$image->extension(); 
+	                 $location = public_path('image/products/'.$imgp);
+	                
+	                 Image::make($image)->save($location);
 
-                $product_image['image'] = $img;
-                $product_image['product_id'] = $product->id;
-                ProductImage::create($product_image);
-            }
+	                $product_image['image'] = $img;
+	                $product_image['product_id'] = $product->id;
+	                ProductImage::create($product_image);
+	            }
         }
         }
     	return redirect()->route('admin.product');

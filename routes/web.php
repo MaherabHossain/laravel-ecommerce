@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\frontend\PagesController;
 use App\Http\Controllers\backend\AdminPageController;
 use App\Http\Controllers\backend\ProductController;
+use App\Http\Controllers\backend\CategoryController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -38,5 +39,16 @@ Route::group(['prefix' => 'admin'], function(){
 		Route::put('/create/edit/{id}', 	[ProductController::class,'product_edit_store'])->name('admin.product.edit');
 		Route::post('/store',		        [ProductController::class,'product_store'])->name('product.store');
 		Route::delete('/delete/{id}',       [ProductController::class,'delete'])->name('admin.product.delete');
+    });
+
+    // admin category route
+
+    Route::group(['prefix'=>'/categories'], function(){
+    	Route::get('',	[CategoryController::class,'index'])->name('category');
+    	Route::get('/create', [CategoryController::class,'create'])->name('category.create');
+    	Route::post('/create', [CategoryController::class,'store'])->name('category.store');
+    	Route::get('/edit/{id}',	[CategoryController::class,'edit'])->name('category.edit');
+    	Route::put('/edit/{id}',	[CategoryController::class,'update'])->name('category.update');
+    	Route::delete('/delete/{id}',	[CategoryController::class,'delete'])->name('category.delete');
     });
 });
