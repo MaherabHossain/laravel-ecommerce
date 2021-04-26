@@ -12,7 +12,7 @@
         <div class="row">
             <div class="col-md-4 ">
                 <div class="card">
-                  <img src="{{ asset('image/image.png') }}" class="card-img-top " alt="...">
+                  <img src="{{ asset('image/image.png') }}" class="card-img-top " alt="there is no image">
                   <div class="card-body">
                     <h5 class="card-title">Samsung m10</h5>
                     <p class="card-text">25000 Tk.</p>

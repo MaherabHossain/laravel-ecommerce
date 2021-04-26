@@ -2,8 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\frontend\PagesController;
+use App\Http\Controllers\frontend\ProductController;
 use App\Http\Controllers\backend\AdminPageController;
-use App\Http\Controllers\backend\ProductController;
+use App\Http\Controllers\backend\AdminProductController;
 use App\Http\Controllers\backend\CategoryController;
 /*
 |--------------------------------------------------------------------------
@@ -20,7 +21,9 @@ use App\Http\Controllers\backend\CategoryController;
 //users route
 
 Route::get('/',  [PagesController::class,'index'])->name('index');
-Route::get('/products', [PagesController::class,'products'])->name('products');
+Route::get('/products', [ProductController::class,'index'])->name('products');
+Route::get('/products/{slug}', [ProductController::class,'show'])->name('product.show');
+Route::get('/search',	[PagesController::class,'search'])->name('search');
 
 
 //admin route
@@ -33,12 +36,12 @@ Route::group(['prefix' => 'admin'], function(){
 
 	Route::group(['prefix' => '/product'], function(){
 
-		Route::get('/', 	                [ProductController::class,'product'])->name('product');
-		Route::get('/create', 	            [ProductController::class,'product_create'])->name('admin.product');
-		Route::get('/create/edit/{id}', 	[ProductController::class,'product_edit'])->name('admin.product.edit');
-		Route::put('/create/edit/{id}', 	[ProductController::class,'product_edit_store'])->name('admin.product.edit');
-		Route::post('/store',		        [ProductController::class,'product_store'])->name('product.store');
-		Route::delete('/delete/{id}',       [ProductController::class,'delete'])->name('admin.product.delete');
+		Route::get('/', 	                [AdminProductController::class,'product'])->name('product');
+		Route::get('/create', 	            [AdminProductController::class,'product_create'])->name('admin.product');
+		Route::get('/create/edit/{id}', 	[AdminProductController::class,'product_edit'])->name('admin.product.edit');
+		Route::put('/create/edit/{id}', 	[AdminProductController::class,'product_edit_store'])->name('admin.product.edit');
+		Route::post('/store',		        [AdminProductController::class,'product_store'])->name('product.store');
+		Route::delete('/delete/{id}',       [AdminProductController::class,'delete'])->name('admin.product.delete');
     });
 
     // admin category route

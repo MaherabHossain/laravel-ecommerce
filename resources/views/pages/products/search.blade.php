@@ -7,7 +7,7 @@
     </div>
     <div class="col-md-9">
         <div class="widget">
-            <h3>Feture product</h3>
+            <h3>Searched product For -> <span class="badge badge-primary">{{ $search }}</span></h3>
         </div>
         <div class="row">
           @foreach($products as $product)

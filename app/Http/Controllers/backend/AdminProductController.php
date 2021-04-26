@@ -2,14 +2,12 @@
 
 namespace App\Http\Controllers\backend;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
 use App\Models\Product;
 use App\Models\ProductImage;
 use Illuminate\Support\Str;
 use Image;
-use App\Http\Controllers\Controller;
-
 class AdminProductController extends Controller
 {
     public function product(){
@@ -31,7 +29,7 @@ class AdminProductController extends Controller
     	$product->description = $request->description;
     	$product->slug = Str::slug($request->title, '-');
     	$product->quantity = $request->quantity;
-    	$product->category_id = 1;
+    	$product->category_id = 11;
     	$product->brand_id = 1;
     	$product->admin_id = 0;
     	$product->price = $request->price;
@@ -44,7 +42,7 @@ class AdminProductController extends Controller
             if(count($request->image)>0){
 	            foreach ($request->image as  $image) {
 	                 $img   = time().'.'.$image->extension(); 
-	                 $location = public_path('image/products/'.$imgp);
+	                 $location = public_path('image/products/'.$img);
 	                
 	                 Image::make($image)->save($location);
 

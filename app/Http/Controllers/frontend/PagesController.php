@@ -18,4 +18,14 @@ class PagesController extends Controller
     // return $this->data;
       return view('pages.products.products',$this->data);
     }
+    public function search ( Request $request ){
+    	// return $request->all();
+    	$search  = $request->search;
+    	$this->data['search'] = $search;
+
+    	$this->data['products'] = Product::orWhere('title','like','%'.$search.'%')
+    									 ->orWhere('description','like','%'.$search.'%')->get();
+		
+		return view('pages.products.search',$this->data);
+    }
 }
