@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\ProductImage;
+use App\Models\Category;
 use Illuminate\Support\Str;
 use Image;
 class AdminProductController extends Controller
@@ -17,7 +18,8 @@ class AdminProductController extends Controller
     }
 
     public function product_create(){
-    	return view('admin.pages.product.create');
+        $this->data['category'] = Category::all();
+    	return view('admin.pages.product.create',$this->data);
     }
 
 
@@ -29,7 +31,7 @@ class AdminProductController extends Controller
     	$product->description = $request->description;
     	$product->slug = Str::slug($request->title, '-');
     	$product->quantity = $request->quantity;
-    	$product->category_id = 11;
+    	$product->category_id = $request->category_id;
     	$product->brand_id = 1;
     	$product->admin_id = 0;
     	$product->price = $request->price;
@@ -52,11 +54,12 @@ class AdminProductController extends Controller
 	            }
         }
         }
-    	return redirect()->route('admin.product');
+    	return redirect()->route('product');
     }
     public function product_edit ($id){
       $this->data['product'] = Product::findOrFail($id);
       $this->data['image']   = ProductImage::findImage($id);
+       $this->data['category'] = Category::all();
       
       return view('admin.pages.product.create',$this->data);
     }

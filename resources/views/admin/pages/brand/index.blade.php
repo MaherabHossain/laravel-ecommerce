@@ -3,8 +3,8 @@
 
 <div class="main-panel">
 
-  <div class="content-wrapper">
-     <h4 class="card-title">All category</h4>
+  <div class="content-wrapper mt-5">
+     <h4 class="card-title">All Brand</h4>
     <div class="row">
 
       <div class="col-lg-12 grid-margin stretch-card">
@@ -12,24 +12,18 @@
               <thead>
                 <tr>
                   <th>ID</th>
-                  <th>Catagory name</th>
-                  <th>Parent Category</th>
+                  <th>Brand name</th>
                   <th>Action</th>
                 </tr>
               </thead>
               <tbody>
-                @foreach($categories as $category)
+                @foreach($brands as $brand)
                 <tr>
-                  <td>{{ $category->id }}</td>
-                  <td>{{ $category->name }}</td>
-                  @if($category->parent_id==0 || !isset($category->parent->name))
-                    <td>No parent</td>
-                  @else
-                    <td>{{ $category->parent->name }}</td>
-                  @endif
+                  <td>{{ $brand->id }}</td>
+                  <td>{{ $brand->name }}</td>
                   <td>
-                    <a href="{{ route('category.edit',['id'=>$category->id]) }}" class="btn btn-success"><i class="fa fa-edit"></i></a>
-                   {!! Form::open(['url' => 'admin/categories/delete/'.$category->id,'method'=>'delete']) !!}
+                    <a href="{{ route('brand.edit',['id'=>$brand->id]) }}" class="btn btn-success"><i class="fa fa-edit"></i></a>
+                   {!! Form::open(['url' => 'admin/brand/delete/'.$brand->id,'method'=>'delete']) !!}
                       <button class="btn btn-danger" style="margin-top: 2px" onclick="return confirm('Are you sure')"><i class="fa fa-trash"></i></button>
                     {!! Form::close() !!}
                   </td>

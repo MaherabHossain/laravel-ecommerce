@@ -36,7 +36,13 @@
         <h3>{{$product->title}}</h3>
         </div>
         <h6>{{$product->price}} Taka.</h6>
-        <span class="badge badge-primary">{{ $product->quantity<1 ? 'No product Available' : $product->quantity }}</span>
+        stock
+        <span class="badge badge-primary"> {{ $product->quantity<1 ? 'No product Available' : $product->quantity }}</span>
+          <br>
+          Brand
+        <span class="badge badge-primary"> {{ $product->brand->name }}</span> <br>
+          Category
+        <span class="badge badge-primary"> {{ $product->category->name }}</span>
         <hr>
         <div class="row">
           <div>

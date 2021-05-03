@@ -31,6 +31,17 @@
           <label for="title" class="form-label">Offer Price</label>
           {{ Form::number('offer_price',NULL,['class' => 'form-control','id'=> 'title', 'placeholder'=> 'Offer Price'])}}
         </div>
+        <div class="col-md-4">
+              <div class="mb-3">
+                <label for="title" class="form-label">Product Category</label>
+                <select name="category_id" id="cars" class="form-control">
+                @foreach($category as $category)
+                  <option value="{{ $category->id }}">{{ $category->name }}</option>
+                @endforeach
+
+              </select>
+              </div>
+           </div>  
         @if(!isset($image))
           <div class="col-md-4">
               <div class="mb-3">
@@ -62,7 +73,8 @@
                 <label for="title" class="form-label">Product Image</label>
                 {{ Form::file('image[]',NULL,['class' => 'form-control','id'=> 'title', 'placeholder'=> 'Chose image'])}}
               </div>
-           </div>         
+           </div>
+                  
         </div>
         @endif 
 

@@ -187,6 +187,15 @@
               </ul>
             </div>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#brand" aria-expanded="false" aria-controls="general-pages"> <img class="menu-icon" src="{{asset('admin_template/images/menu_icons/08.png')}}" alt="menu icon"> <span class="menu-title">Brand</span><i class="menu-arrow"></i></a>
+            <div class="collapse" id="brand">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="{{ route('brand') }}">All Brand</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{ route('brand.create') }}">Add brand</a></li>
+              </ul>
+            </div>
+          </li>
         </ul>
       </nav>
       <!-- partial -->

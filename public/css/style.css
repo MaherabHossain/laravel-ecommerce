@@ -7,3 +7,11 @@
 .feature-img{
 	max-width: 200px;
 }
+a.nav-link.active {
+    margin-top: 17px;
+    margin-right: 6px;
+}
+.container-fluid {
+    margin-left: 84px!important;
+    margin-right: 84px!important;
+}

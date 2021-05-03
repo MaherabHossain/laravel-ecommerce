@@ -12,9 +12,9 @@
 <body>
 
  <div class="wrapper">
-     <div class="container">
+     <div class="">
         <!-- Nav start -->
-         <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+         <nav class="navbar navbar-expand-lg navbar-light bg-primary ">
             
               <div class="container-fluid">
                 <a class="navbar-brand" href="{{ route('index') }}"><strong>AmarDokan</strong></a>
@@ -24,28 +24,50 @@
                     <li class="nav-item">
                       <a class="nav-link active" aria-current="page" href="{{ route('products') }}">Products</a>
                     </li>
-                    <!-- <li class="nav-item dropdown">
-                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Dropdown
-                      </a>
-                      <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
-                      </ul>
-                    </li> -->
-                    <!-- <li class="nav-item">
-                      <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-                    </li> -->
+                    <li class="nav-item">
+                        <form class="d-flex mt-20" method="get" action="{{ route('search') }}">
+                      <div class="input-group mb-3">
+                        <input type="text" class="form-control" name="search" placeholder="Search product " aria-label="Recipient's username" aria-describedby="basic-addon2">
+                        <button class="btn btn-primary"><i class="fa fa-search"></i></button>
+                      </div>
+                    </form>
+                    </li>
+                   
                   </ul>
                 </div>
-                  <form class="d-flex mt-20" method="get" action="{{ route('search') }}">
-                    <div class="input-group mb-3">
-                      <input type="text" class="form-control" name="search" placeholder="Search product " aria-label="Recipient's username" aria-describedby="basic-addon2">
-                      <button class="btn btn-primary"><i class="fa fa-search"></i></button>
-                    </div>
-                  </form>
+                   <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                   @guest
+                          @if (Route::has('login'))
+                              <li class="nav-item">
+                                  <a class="nav-link text-white" href="{{ route('login') }}">{{ __('Login') }}</a>
+                              </li>
+                          @endif
+
+                          @if (Route::has('register'))
+                              <li class="nav-item">
+                                  <a class="nav-link text-white" href="{{ route('register') }}">{{ __('Register') }}</a>
+                              </li>
+                          @endif
+                      @else
+                          <li class="nav-item dropdown">
+                              <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                  {{ Auth::user()->name }}
+                              </a>
+
+                              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                  <a class="dropdown-item" href="{{ route('logout') }}"
+                                     onclick="event.preventDefault();
+                                                   document.getElementById('logout-form').submit();">
+                                      {{ __('Logout') }}
+                                  </a>
+
+                                  <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                      @csrf
+                                  </form>
+                              </div>
+                          </li>
+                        @endguest
+                      </ul>
                 </div>
               </div>
             </div>
@@ -58,8 +80,8 @@
 
        <!-- end sidebar+content -->
      </div>
-     <div class="container">
-       <footer class="mt-20 bg-primary padding-2">
+     <div class="">
+       <footer class="mt-20 bg-primary padding-2 ">
            <p class="text-center">&copy; 2020 all right reserved by <strong>AmarDokan</strong></p>
        </footer>
      </div>

@@ -3,9 +3,11 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\frontend\PagesController;
 use App\Http\Controllers\frontend\ProductController;
+use App\Http\Controllers\frontend\FrontendCategoryController;
 use App\Http\Controllers\backend\AdminPageController;
 use App\Http\Controllers\backend\AdminProductController;
 use App\Http\Controllers\backend\CategoryController;
+use App\Http\Controllers\backend\BrandController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,8 +23,23 @@ use App\Http\Controllers\backend\CategoryController;
 //users route
 
 Route::get('/',  [PagesController::class,'index'])->name('index');
-Route::get('/products', [ProductController::class,'index'])->name('products');
-Route::get('/products/{slug}', [ProductController::class,'show'])->name('product.show');
+
+//user product
+Route::group(['prefix'=>'/products'], function(){
+    Route::get('/', [ProductController::class,'index'])->name('products');
+    Route::get('/{slug}', [ProductController::class,'show'])->name('product.show');
+});
+
+//user category show
+Route::group(['prefix'=>'/category'], function(){
+    Route::get('/{id}', [FrontendCategoryController::class,'show'])->name('category.show');
+    
+});
+
+
+// Route::get('category/{id}', [FrontendCategoryController::class,'show'])->name('category.show');
+
+//user search
 Route::get('/search',	[PagesController::class,'search'])->name('search');
 
 
@@ -54,4 +71,16 @@ Route::group(['prefix' => 'admin'], function(){
     	Route::put('/edit/{id}',	[CategoryController::class,'update'])->name('category.update');
     	Route::delete('/delete/{id}',	[CategoryController::class,'delete'])->name('category.delete');
     });
+    Route::group(['prefix'=>'/brand'], function(){
+        Route::get('',  [BrandController::class,'index'])->name('brand');
+        Route::get('/create', [BrandController::class,'create'])->name('brand.create');
+        Route::post('/create', [BrandController::class,'store'])->name('brand.store');
+        Route::get('/edit/{id}',    [BrandController::class,'edit'])->name('brand.edit');
+        Route::put('/edit/{id}',    [BrandController::class,'update'])->name('brand.update');
+        Route::delete('/delete/{id}',   [BrandController::class,'delete'])->name('brand.delete');
+    });
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
